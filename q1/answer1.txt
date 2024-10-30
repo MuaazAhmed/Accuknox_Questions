@@ -1,0 +1,7 @@
+Question 1: By default are django signals executed synchronously or asynchronously? Please
+support your answer with a code snippet that conclusively proves your stance. The code does
+not need to be elegant and production ready, we just need to understand your logic.
+
+Answer 1: In django, signals are executed synchronously by default. it menas that when a signal is sent django will wait for all connected Recievers/handelers to complete bewfore moving to next line of code.
+
+in the given code reciever function gives a delay to demonstrate that execution is blocking for nest line of code and processing is happening of some sort. 

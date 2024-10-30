@@ -1,0 +1,9 @@
+Question 3: By default do django signals run in the same database transaction as the caller?
+Please support your answer with a code snippet that conclusively proves your stance. The code
+does not need to be elegant and production ready, we just need to understand your logic.
+
+Answer 3: No, Django signals do not inherently run within the same transaction as the caller by default. While they fire immediately after the associated model action (like save() or delete()), they aren’t aware of the caller’s transaction state. This means:
+
+If the caller's transaction rolls back, the signal does not automatically roll back any database changes it makes.
+
+To make them run within the transaction, we need to wrap its actions in transaction.on_commit.
